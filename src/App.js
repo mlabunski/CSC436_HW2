@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import UserBar from "./user/UserBar";
 import TodoList from "./todo/TodoList";
 import CreateTodo from "./todo/CreateTodo";
+import appReducer from "./Reducers";
 
 function App() {
-  const [user, setUser] = useState("");
-  const [todos, setTodos] = useState([]);
+  //const [user, setUser] = useState("");
+  //const [user, dispatchUser] = useReducer(userReducer, "");
+
+  //const [todos, setTodos] = useState([]);
+  //const [todos, dispatchTodos] = useReducer(todoReducer, []);
+
+  const [state, dispatch] = useReducer(appReducer, { user: "", todos: [] });
 
   return (
     <div>
-      <UserBar user={user} setUser={setUser} />
-      <TodoList todos={todos} />
+      <UserBar user={state.user} dispatch={dispatch} />
+      <TodoList todos={state.todos} />
       <br />
-      {user && <CreateTodo user={user} todos={todos} setTodos={setTodos} />}
+      {state.user && (
+        <CreateTodo user={state.user} todos={state.todos} dispatch={dispatch} />
+      )}
     </div>
   );
 }
