@@ -19,14 +19,6 @@ export default function CreateTodo({ user, todos, dispatch }) {
           id: v4(),
         });
       }}
-      // const newTodo = {
-      // title,
-      //description,
-      //author: user,
-      //dateCreated: date.toDateString(),
-      //};
-      //setTodos([...todos, newTodo]);
-      // }}
     >
       <div>
         Author: <b>{user}</b>

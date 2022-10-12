@@ -1,17 +1,19 @@
-import { useState, useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import UserBar from "./user/UserBar";
 import TodoList from "./todo/TodoList";
 import CreateTodo from "./todo/CreateTodo";
 import appReducer from "./Reducers";
 
-function App() {
-  //const [user, setUser] = useState("");
-  //const [user, dispatchUser] = useReducer(userReducer, "");
-
-  //const [todos, setTodos] = useState([]);
-  //const [todos, dispatchTodos] = useReducer(todoReducer, []);
-
+function App({ title }) {
   const [state, dispatch] = useReducer(appReducer, { user: "", todos: [] });
+
+  useEffect(() => {
+    if (state.user) {
+      document.title = `${state.user}’s Todos`;
+    } else {
+      document.title = "Todo App";
+    }
+  }, [state.user]);
 
   return (
     <div>
