@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../Contexts";
+import DeleteTodo from "./DeleteTodo";
 
-export default function Todo({ title, description, author, dateCreated }) {
+export default function Todo({ title, description, author, dateCreated, id }) {
   const { secondaryColor } = useContext(ThemeContext);
   const [complete, setComplete] = useState(false);
   var completeMsg = "";
@@ -31,6 +32,8 @@ export default function Todo({ title, description, author, dateCreated }) {
         }}
       />
       {completeMsg}
+      <br />
+      <DeleteTodo id={id} />
       <br />
       --------------------------------------------------------------------
       <br />

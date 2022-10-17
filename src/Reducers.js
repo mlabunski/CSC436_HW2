@@ -21,6 +21,8 @@ function todoReducer(state, action) {
         id: action.id,
       };
       return [...state, newTodo];
+    case "DELETE_TODO":
+      return [...state].filter((x) => x.id != action.id);
     default:
       return state;
   }
