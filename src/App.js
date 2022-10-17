@@ -1,8 +1,11 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import UserBar from "./user/UserBar";
 import TodoList from "./todo/TodoList";
 import CreateTodo from "./todo/CreateTodo";
 import appReducer from "./Reducers";
+import Header from "./Header";
+import { ThemeContext, StateContext } from "./Contexts";
+import ChangeTheme from "./ChangeTheme";
 
 function App({ title }) {
   const [state, dispatch] = useReducer(appReducer, { user: "", todos: [] });
@@ -15,14 +18,23 @@ function App({ title }) {
     }
   }, [state.user]);
 
+  const [theme, setTheme] = useState({
+    primaryColor: "deepskyblue",
+    secondaryColor: "coral",
+  });
+
   return (
     <div>
-      <UserBar user={state.user} dispatch={dispatch} />
-      <TodoList todos={state.todos} />
-      <br />
-      {state.user && (
-        <CreateTodo user={state.user} todos={state.todos} dispatch={dispatch} />
-      )}
+      <StateContext.Provider value={{ state, dispatch }}>
+        <ThemeContext.Provider value={theme}>
+          <Header title="Todo App" />
+          <ChangeTheme theme={theme} setTheme={setTheme} />
+          <UserBar />
+          <TodoList />
+          <br />
+          {state.user && <CreateTodo />}
+        </ThemeContext.Provider>
+      </StateContext.Provider>
     </div>
   );
 }

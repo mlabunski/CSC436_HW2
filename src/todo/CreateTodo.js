@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 } from "uuid";
+import { StateContext } from "../Contexts";
 
-export default function CreateTodo({ user, todos, dispatch }) {
+export default function CreateTodo() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const date = new Date();
+
+  const { state, dispatch } = useContext(StateContext);
+  const { user } = state;
 
   return (
     <form

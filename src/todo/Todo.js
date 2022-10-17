@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../Contexts";
 
 export default function Todo({ title, description, author, dateCreated }) {
+  const { secondaryColor } = useContext(ThemeContext);
   const [complete, setComplete] = useState(false);
   var completeMsg = "";
   const date = new Date();
@@ -14,7 +17,7 @@ export default function Todo({ title, description, author, dateCreated }) {
   return (
     <div>
       <br />
-      <h3>{title}</h3>
+      <h3 style={{ color: secondaryColor }}>{title}</h3>
       <div>{description}</div>
       <br />
       <i>
