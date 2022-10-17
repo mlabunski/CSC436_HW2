@@ -2,8 +2,8 @@ import React from "react";
 import ThemeItem from "./ThemeItem";
 
 const THEMES = [
-  { primaryColor: "deepskyblue", secondaryColor: "coral" },
-  { primaryColor: "orchid", secondaryColor: "mediumseagreen" },
+  { primaryColor: "midnightblue", secondaryColor: "sienna" },
+  { primaryColor: "indigo", secondaryColor: "darkolivegreen" },
 ];
 
 export default function ChangeTheme({ theme, setTheme }) {
