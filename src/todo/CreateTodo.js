@@ -21,6 +21,7 @@ export default function CreateTodo() {
           author: user,
           dateCreated: date.toDateString(),
           id: v4(),
+          complete: false,
         });
       }}
     >

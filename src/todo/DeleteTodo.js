@@ -1,10 +1,8 @@
-import { useState, useContext } from "react";
-import { v4 } from "uuid";
+import { useContext } from "react";
 import { StateContext } from "../Contexts";
 
 export default function DeleteTodo({ id }) {
-  const { state, dispatch } = useContext(StateContext);
-  const { todos } = state;
+  const { dispatch } = useContext(StateContext);
 
   return (
     <button

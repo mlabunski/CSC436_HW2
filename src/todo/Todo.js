@@ -1,19 +1,17 @@
-import { useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../Contexts";
 import DeleteTodo from "./DeleteTodo";
+import ToggleTodo from "./ToggleTodo";
 
-export default function Todo({ title, description, author, dateCreated, id }) {
+export default function Todo({
+  title,
+  description,
+  author,
+  dateCreated,
+  id,
+  complete,
+}) {
   const { secondaryColor } = useContext(ThemeContext);
-  const [complete, setComplete] = useState(false);
-  var completeMsg = "";
-  const date = new Date();
-
-  if (complete) {
-    completeMsg = " Completed on " + date.toDateString();
-  } else {
-    completeMsg = " Not completed";
-  }
 
   return (
     <div>
@@ -25,13 +23,7 @@ export default function Todo({ title, description, author, dateCreated, id }) {
         Posted by <b>{author}</b> on {dateCreated}
       </i>
       <br />
-      <input
-        type="checkbox"
-        onClick={() => {
-          setComplete(!complete);
-        }}
-      />
-      {completeMsg}
+      <ToggleTodo id={id} complete={complete} />
       <br />
       <DeleteTodo id={id} />
       <br />
