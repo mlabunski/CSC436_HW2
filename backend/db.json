@@ -1,0 +1,30 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "First todo",
+      "description": "Some content",
+      "author": "matt"
+    },
+    {
+      "title": "Updated Title",
+      "description": "New content",
+      "author": "matt",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$jFAxp4SmWiNImI4gEDB/euQAz9wpcSzfnYXnmISeKO.fS3JQ/bewW",
+      "id": 1
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    }
+  ]
+}

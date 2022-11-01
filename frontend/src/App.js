@@ -6,6 +6,7 @@ import appReducer from "./Reducers";
 import Header from "./Header";
 import { ThemeContext, StateContext } from "./Contexts";
 import ChangeTheme from "./ChangeTheme";
+import { useResource } from "react-request-hook";
 
 function App({ title }) {
   const [state, dispatch] = useReducer(appReducer, { user: "", todos: [] });
@@ -22,6 +23,31 @@ function App({ title }) {
     primaryColor: "deepskyblue",
     secondaryColor: "coral",
   });
+
+  /* useEffect(() => {
+    fetch("/api/themes")
+      .then((result) => result.json())
+      .then((themes) => setTheme(themes));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/todos")
+      .then((result) => result.json())
+      .then((todos) => dispatch({ type: "FETCH_TODOS", todos }));
+  }, []); */
+
+  const [todos, getTodos] = useResource(() => ({
+    url: "/todos",
+    method: "get",
+  }));
+
+  useEffect(getTodos, []);
+
+  useEffect(() => {
+    if (todos && todos.data) {
+      dispatch({ type: "FETCH_TODOS", todos: todos.data });
+    }
+  }, [todos]);
 
   return (
     <div>
