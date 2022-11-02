@@ -48,6 +48,11 @@
       "email": "anotheruser@email.com",
       "password": "$2a$10$YT9iEgTPsVEcus2.c3yjeutVP2/Jj0cJQJffisiO7ggOPEV7teCHu",
       "id": 3
+    },
+    {
+      "email": "auser@email.com",
+      "password": "$2a$10$bC/8o3kyUbUAJFNBDQQU0OuXXgo9RVor0mGkLJFpzgJBMI4uEXVkS",
+      "id": 4
     }
   ],
   "themes": [
