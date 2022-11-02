@@ -8,8 +8,13 @@ import { ThemeContext, StateContext } from "./Contexts";
 import ChangeTheme from "./ChangeTheme";
 import { useResource } from "react-request-hook";
 
-function App({ title }) {
-  const [state, dispatch] = useReducer(appReducer, { user: "", todos: [] });
+function App() {
+  const initialTodos = [];
+
+  const [state, dispatch] = useReducer(appReducer, {
+    user: "",
+    todos: initialTodos,
+  });
 
   useEffect(() => {
     if (state.user) {
@@ -24,18 +29,6 @@ function App({ title }) {
     secondaryColor: "coral",
   });
 
-  /* useEffect(() => {
-    fetch("/api/themes")
-      .then((result) => result.json())
-      .then((themes) => setTheme(themes));
-  }, []);
-
-  useEffect(() => {
-    fetch("/api/todos")
-      .then((result) => result.json())
-      .then((todos) => dispatch({ type: "FETCH_TODOS", todos }));
-  }, []); */
-
   const [todos, getTodos] = useResource(() => ({
     url: "/todos",
     method: "get",
@@ -45,7 +38,7 @@ function App({ title }) {
 
   useEffect(() => {
     if (todos && todos.data) {
-      dispatch({ type: "FETCH_TODOS", todos: todos.data });
+      dispatch({ type: "FETCH_TODOS", todos: todos.data.reverse() });
     }
   }, [todos]);
 

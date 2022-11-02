@@ -4,13 +4,33 @@
       "id": 1,
       "title": "First todo",
       "description": "Some content",
-      "author": "matt"
+      "author": "matt",
+      "complete": false,
+      "dateCreated": "Tue Nov 01 2022"
     },
     {
-      "title": "Updated Title",
-      "description": "New content",
-      "author": "matt",
-      "id": 3
+      "id": "fd8e507a-b642-41cc-9298-7d6f0b061f05",
+      "title": "New User's Todo 1",
+      "description": "This is new todo by a new user",
+      "author": "newuser@email.com",
+      "complete": false,
+      "dateCreated": "Tue Nov 01 2022"
+    },
+    {
+      "id": "eb393a77-2bea-4ab7-ab59-8ba70cefa5de",
+      "title": "New User Todo 2",
+      "description": "Logged out, logged in, created new todo 2",
+      "author": "newuser@email.com",
+      "complete": false,
+      "dateCreated": "Tue Nov 01 2022"
+    },
+    {
+      "id": "12b49077-d158-41be-90f8-bef8db9d6576",
+      "title": "Another user's first todo",
+      "description": "this is a todo",
+      "author": "anotheruser@email.com",
+      "complete": false,
+      "dateCreated": "Tue Nov 01 2022"
     }
   ],
   "users": [
@@ -18,6 +38,16 @@
       "email": "test@test.com",
       "password": "$2a$10$jFAxp4SmWiNImI4gEDB/euQAz9wpcSzfnYXnmISeKO.fS3JQ/bewW",
       "id": 1
+    },
+    {
+      "email": "newuser@email.com",
+      "password": "$2a$10$GPRYhflfNx1DJHISq9QtZOD1hJ4gtUg.45vqAjVoGDT2VUrcVLI2O",
+      "id": 2
+    },
+    {
+      "email": "anotheruser@email.com",
+      "password": "$2a$10$YT9iEgTPsVEcus2.c3yjeutVP2/Jj0cJQJffisiO7ggOPEV7teCHu",
+      "id": 3
     }
   ],
   "themes": [
@@ -25,6 +55,16 @@
       "id": 1,
       "primaryColor": "deepskyblue",
       "secondaryColor": "coral"
+    },
+    {
+      "id": 2,
+      "primaryColor": "red",
+      "secondaryColor": "blue"
+    },
+    {
+      "id": 3,
+      "primaryColor": "green",
+      "secondaryColor": "purple"
     }
   ]
 }

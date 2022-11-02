@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { v4 } from "uuid";
 import { StateContext } from "../Contexts";
+import { useResource } from "react-request-hook";
 
 export default function CreateTodo() {
   const [title, setTitle] = useState("");
@@ -10,18 +11,34 @@ export default function CreateTodo() {
   const { state, dispatch } = useContext(StateContext);
   const { user } = state;
 
+  const [todo, createTodo] = useResource(
+    ({ id, title, description, author, complete, dateCreated }) => ({
+      url: "/todos",
+      method: "post",
+      data: { id, title, description, author, complete, dateCreated },
+    })
+  );
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({
-          type: "CREATE_TODO",
+        createTodo({
+          id: v4(),
           title,
           description,
           author: user,
-          dateCreated: date.toDateString(),
-          id: v4(),
           complete: false,
+          dateCreated: date.toDateString(),
+        });
+        dispatch({
+          type: "CREATE_TODO",
+          id: v4(),
+          title,
+          description,
+          author: user,
+          complete: false,
+          dateCreated: date.toDateString(),
         });
       }}
     >
