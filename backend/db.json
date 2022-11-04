@@ -1,36 +1,67 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "First todo",
-      "description": "Some content",
-      "author": "matt",
-      "complete": false,
-      "dateCreated": "Tue Nov 01 2022"
+      "id": "18945dbb-474d-46df-95c2-ec5cbf01e2ce",
+      "title": "New Todo1",
+      "description": "Testing after modifying toggle todo. ",
+      "author": "auser@email.com",
+      "complete": true,
+      "dateCreated": "Wed Nov 02 2022",
+      "dateCompleted": "Fri Nov 04 2022"
     },
     {
-      "id": "fd8e507a-b642-41cc-9298-7d6f0b061f05",
-      "title": "New User's Todo 1",
-      "description": "This is new todo by a new user",
-      "author": "newuser@email.com",
+      "id": "b37e7f1a-1959-4f4e-a349-966f13c58efa",
+      "title": "New Todo2",
+      "description": "Another test after modifying toggle todo. ",
+      "author": "auser@email.com",
       "complete": false,
-      "dateCreated": "Tue Nov 01 2022"
+      "dateCreated": "Wed Nov 02 2022",
+      "dateCompleted": "Fri Nov 04 2022"
     },
     {
-      "id": "eb393a77-2bea-4ab7-ab59-8ba70cefa5de",
-      "title": "New User Todo 2",
-      "description": "Logged out, logged in, created new todo 2",
-      "author": "newuser@email.com",
+      "id": "351f8ecc-69f4-4623-b862-7811332f6b02",
+      "title": "Todo 4",
+      "description": "some text",
+      "author": "auser@email.com",
       "complete": false,
-      "dateCreated": "Tue Nov 01 2022"
+      "dateCreated": "Wed Nov 02 2022",
+      "dateCompleted": "Fri Nov 04 2022"
     },
     {
-      "id": "12b49077-d158-41be-90f8-bef8db9d6576",
-      "title": "Another user's first todo",
-      "description": "this is a todo",
-      "author": "anotheruser@email.com",
+      "title": "New Todo Nov 4",
+      "description": "this todo was created Nov 4",
+      "author": "matt@matt.com",
       "complete": false,
-      "dateCreated": "Tue Nov 01 2022"
+      "dateCreated": "Fri Nov 04 2022",
+      "dateCompleted": "Fri Nov 04 2022",
+      "id": "Z_Quj69"
+    },
+    {
+      "title": "Todo 5",
+      "description": "here is some text",
+      "author": "matt@matt.com",
+      "complete": true,
+      "dateCreated": "Fri Nov 04 2022",
+      "dateCompleted": "Fri Nov 04 2022",
+      "id": "_LTeafv"
+    },
+    {
+      "title": "Newest Todo 11/4",
+      "description": "this is a description",
+      "author": "matt@matt.com",
+      "complete": true,
+      "dateCreated": "Fri Nov 04 2022",
+      "dateCompleted": "Fri Nov 04 2022",
+      "id": "wHsaSKN"
+    },
+    {
+      "title": "Todo 123",
+      "description": "one two three",
+      "author": "matt@matt.com",
+      "complete": true,
+      "dateCreated": "Fri Nov 04 2022",
+      "dateCompleted": "Fri Nov 04 2022",
+      "id": "8cqAry7"
     }
   ],
   "users": [
@@ -53,6 +84,11 @@
       "email": "auser@email.com",
       "password": "$2a$10$bC/8o3kyUbUAJFNBDQQU0OuXXgo9RVor0mGkLJFpzgJBMI4uEXVkS",
       "id": 4
+    },
+    {
+      "email": "matt@matt.com",
+      "password": "$2a$10$FY.26o20rP5wEfghFtnc2uPLjRftKIvY9CoetW8ZQ7zANl6NFjgNC",
+      "id": 5
     }
   ],
   "themes": [

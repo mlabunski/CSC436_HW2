@@ -1,5 +1,6 @@
-import { useContext } from "react";
-import { ThemeContext } from "../Contexts";
+import { useContext, useEffect } from "react";
+import { useResource } from "react-request-hook";
+import { ThemeContext, StateContext } from "../Contexts";
 import DeleteTodo from "./DeleteTodo";
 import ToggleTodo from "./ToggleTodo";
 
@@ -10,6 +11,7 @@ export default function Todo({
   dateCreated,
   id,
   complete,
+  dateCompleted,
 }) {
   const { secondaryColor } = useContext(ThemeContext);
 
@@ -23,7 +25,9 @@ export default function Todo({
         Posted by <b>{author}</b> on {dateCreated}
       </i>
       <br />
-      <ToggleTodo id={id} complete={complete} />
+      <div>
+        <ToggleTodo id={id} complete={complete} dateCompleted={dateCompleted} />
+      </div>
       <br />
       <DeleteTodo id={id} />
       <br />

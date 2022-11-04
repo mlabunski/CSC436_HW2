@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { v4 } from "uuid";
+import { useState, useContext, useEffect } from "react";
 import { StateContext } from "../Contexts";
 import { useResource } from "react-request-hook";
 
@@ -12,33 +11,46 @@ export default function CreateTodo() {
   const { user } = state;
 
   const [todo, createTodo] = useResource(
-    ({ id, title, description, author, complete, dateCreated }) => ({
+    ({ title, description, author, complete, dateCreated, dateCompleted }) => ({
       url: "/todos",
       method: "post",
-      data: { id, title, description, author, complete, dateCreated },
+      data: {
+        title,
+        description,
+        author,
+        complete,
+        dateCreated,
+        dateCompleted,
+      },
     })
   );
+
+  useEffect(() => {
+    if (todo && todo.isLoading === false && todo.data) {
+      dispatch({
+        type: "CREATE_TODO",
+        id: todo.data.id,
+        title: todo.data.title,
+        description: todo.data.description,
+        author: todo.data.author,
+        dateCreated: todo.data.dateCreated,
+        complete: todo.data.complete,
+        dateCompleted: todo.data.dateCompleted,
+      });
+    }
+  }, [todo]);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         createTodo({
-          id: v4(),
           title,
           description,
           author: user,
           complete: false,
           dateCreated: date.toDateString(),
-        });
-        dispatch({
-          type: "CREATE_TODO",
-          id: v4(),
-          title,
-          description,
-          author: user,
-          complete: false,
-          dateCreated: date.toDateString(),
+          dateCompleted: "Not complete",
         });
       }}
     >

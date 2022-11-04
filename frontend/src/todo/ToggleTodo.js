@@ -1,31 +1,45 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useResource } from "react-request-hook";
 import { StateContext } from "../Contexts";
 
-export default function ToggleTodo({ id, complete }) {
+export default function ToggleTodo({ id, complete, dateCompleted }) {
   const { dispatch } = useContext(StateContext);
 
-  var completeMsg = "";
-  const date = new Date();
+  const [todo, toggleTodo] = useResource(({ id, complete, dateCompleted }) => ({
+    url: "/todos/" + id,
+    method: "patch",
+    data: { id, complete, dateCompleted },
+  }));
 
-  if (complete) {
-    completeMsg = " Completed on " + date.toDateString();
-  } else {
-    completeMsg = " Not completed";
-  }
+  useEffect(() => {
+    if (todo && todo.isLoading === false && todo.data) {
+      dispatch({
+        type: "TOGGLE_TODO",
+        id: todo.data.id,
+        complete: todo.data.complete,
+        dateCompleted: todo.data.dateCompleted,
+      });
+    }
+  }, [todo]);
+
+  const todaysDate = new Date().toDateString();
 
   return (
     <div>
       <input
         type="checkbox"
+        checked={complete}
         onChange={() => {
-          dispatch({
-            type: "TOGGLE_TODO",
+          toggleTodo({
             id: id,
-            complete: complete,
+            complete: !complete,
+            dateCompleted: todaysDate,
           });
         }}
       />
-      {completeMsg}
+      {complete && (
+        <span style={{ color: "green" }}>Completed on {dateCompleted}</span>
+      )}
     </div>
   );
 }

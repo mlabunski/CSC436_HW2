@@ -30,7 +30,11 @@ function todoReducer(state, action) {
     case "TOGGLE_TODO":
       const updatedTodos = state.map((x) => {
         if (x.id === action.id) {
-          return { ...x, complete: !action.complete };
+          return {
+            ...x,
+            complete: action.complete,
+            dateCompleted: action.dateCompleted,
+          };
         }
         return x;
       });
