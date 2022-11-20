@@ -12,12 +12,12 @@ export default function CreateTodo() {
 
   const [todo, createTodo] = useResource(
     ({ title, description, author, complete, dateCreated, dateCompleted }) => ({
-      url: "/todos",
+      url: "/todo",
       method: "post",
+      headers: { Authorization: `${state.user.access_token}` },
       data: {
         title,
         description,
-        author,
         complete,
         dateCreated,
         dateCompleted,
@@ -32,7 +32,7 @@ export default function CreateTodo() {
         id: todo.data.id,
         title: todo.data.title,
         description: todo.data.description,
-        author: todo.data.author,
+        author: user.username,
         dateCreated: todo.data.dateCreated,
         complete: todo.data.complete,
         dateCompleted: todo.data.dateCompleted,
@@ -55,7 +55,7 @@ export default function CreateTodo() {
       }}
     >
       <div>
-        Author: <b>{user}</b>
+        Author: <b>{user.username}</b>
       </div>
       <div>
         <label htmlFor="create-title">Title:</label>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../Contexts";
+import { ThemeContext, StateContext } from "../Contexts";
 import DeleteTodo from "./DeleteTodo";
 import ToggleTodo from "./ToggleTodo";
 import React from "react";
@@ -14,7 +14,9 @@ function Todo({
   dateCompleted,
 }) {
   const { secondaryColor } = useContext(ThemeContext);
-  console.log("post rendered");
+  const { state } = useContext(StateContext);
+  const { user } = state;
+  const username = user.username;
 
   return (
     <div>
@@ -23,7 +25,7 @@ function Todo({
       <div>{description}</div>
       <br />
       <i>
-        Posted by <b>{author}</b> on {dateCreated}
+        Posted by <b>{username}</b> on {dateCreated}
       </i>
       <br />
       <div>

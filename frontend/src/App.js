@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     if (state.user) {
-      document.title = `${state.user}’s Todos`;
+      document.title = `${state.user.username}’s Todos`;
     } else {
       document.title = "Todo App";
     }
@@ -31,15 +31,20 @@ function App() {
   });
 
   const [todos, getTodos] = useResource(() => ({
-    url: "/todos",
+    url: "/todo",
     method: "get",
+    headers: { Authorization: `${state?.user?.access_token}` },
   }));
 
-  useEffect(getTodos, []);
+  useEffect(() => {
+    if (state.user) {
+      getTodos();
+    }
+  }, [state?.user?.access_token]);
 
   useEffect(() => {
-    if (todos && todos.data) {
-      dispatch({ type: "FETCH_TODOS", todos: todos.data.reverse() });
+    if (todos && todos.isLoading === false && todos.data) {
+      dispatch({ type: "FETCH_TODOS", todos: todos.data.todos });
     }
   }, [todos]);
 
@@ -52,7 +57,7 @@ function App() {
           <React.Suspense fallback={"Loading..."}>
             <UserBar />
           </React.Suspense>
-          <TodoList />
+          {state.user && <TodoList />}
           <br />
           {state.user && <CreateTodo />}
         </ThemeContext.Provider>
