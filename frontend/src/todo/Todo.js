@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
-import { useResource } from "react-request-hook";
-import { ThemeContext, StateContext } from "../Contexts";
+import { useContext } from "react";
+import { ThemeContext } from "../Contexts";
 import DeleteTodo from "./DeleteTodo";
 import ToggleTodo from "./ToggleTodo";
+import React from "react";
 
-export default function Todo({
+function Todo({
   title,
   description,
   author,
@@ -14,6 +14,7 @@ export default function Todo({
   dateCompleted,
 }) {
   const { secondaryColor } = useContext(ThemeContext);
+  console.log("post rendered");
 
   return (
     <div>
@@ -36,3 +37,5 @@ export default function Todo({
     </div>
   );
 }
+
+export default React.memo(Todo);
