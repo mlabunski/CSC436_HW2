@@ -53,7 +53,7 @@ function App() {
       <StateContext.Provider value={{ state, dispatch }}>
         <ThemeContext.Provider value={theme}>
           <Header title="Todo App" />
-          <ChangeTheme theme={theme} setTheme={setTheme} />
+          {/* <ChangeTheme theme={theme} setTheme={setTheme} /> */}
           <React.Suspense fallback={"Loading..."}>
             <UserBar />
           </React.Suspense>

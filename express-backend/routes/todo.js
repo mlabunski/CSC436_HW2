@@ -57,4 +57,16 @@ router.delete("/:id", async function (req, res, next) {
   return res.status(200).json({ deleted });
 });
 
+router.patch("/:id", async function (req, res, next) {
+  const toggled = await Todo.findByIdAndUpdate(
+    req.body.id,
+    {
+      complete: req.body.complete,
+      dateCompleted: req.body.dateCompleted,
+    },
+    { new: true }
+  );
+  return res.status(200).json({ toggled });
+});
+
 module.exports = router;

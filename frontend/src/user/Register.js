@@ -20,7 +20,12 @@ export default function Register() {
       if (user.error) {
         setStatus("Registration failed, please try again later.");
       } else {
-        setStatus("Registration successful. You may now login.");
+        //setStatus("Registration successful. You may now login.");
+        dispatch({
+          type: "LOGIN",
+          username: user.data.username,
+          access_token: user.data.access_token,
+        });
       }
     }
   }, [user]);

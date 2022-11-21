@@ -35,7 +35,7 @@ function todoReducer(state, action) {
       return [...state].filter((x) => x._id !== action.id);
     case "TOGGLE_TODO":
       const updatedTodos = state.map((x) => {
-        if (x.id === action.id) {
+        if (x._id === action.id) {
           return {
             ...x,
             complete: action.complete,

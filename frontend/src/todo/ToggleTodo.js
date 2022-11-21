@@ -3,21 +3,24 @@ import { useResource } from "react-request-hook";
 import { StateContext } from "../Contexts";
 
 export default function ToggleTodo({ id, complete, dateCompleted }) {
-  const { dispatch } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
 
   const [todo, toggleTodo] = useResource(({ id, complete, dateCompleted }) => ({
-    url: "/todos/" + id,
+    url: "/todo/" + id,
     method: "patch",
+    headers: { Authorization: `${state.user.access_token}` },
     data: { id, complete, dateCompleted },
   }));
 
   useEffect(() => {
     if (todo && todo.isLoading === false && todo.data) {
+      console.log("complete: ", todo.data.toggled.complete);
+      console.log("date complete: ", todo.data.toggled.dateCompleted);
       dispatch({
         type: "TOGGLE_TODO",
-        id: todo.data.id,
-        complete: todo.data.complete,
-        dateCompleted: todo.data.dateCompleted,
+        id: todo.data.toggled._id,
+        complete: todo.data.toggled.complete,
+        dateCompleted: todo.data.toggled.dateCompleted,
       });
     }
   }, [todo]);
