@@ -27,12 +27,12 @@ function todoReducer(state, action) {
         description: action.description,
         author: action.author,
         dateCreated: action.dateCreated,
-        id: action.id,
+        _id: action.id,
         complete: action.complete,
       };
       return [...state, newTodo];
     case "DELETE_TODO":
-      return [...state].filter((x) => x.id !== action.id);
+      return [...state].filter((x) => x._id !== action.id);
     case "TOGGLE_TODO":
       const updatedTodos = state.map((x) => {
         if (x.id === action.id) {

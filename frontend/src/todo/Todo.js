@@ -9,7 +9,7 @@ function Todo({
   description,
   author,
   dateCreated,
-  id,
+  _id,
   complete,
   dateCompleted,
 }) {
@@ -29,10 +29,14 @@ function Todo({
       </i>
       <br />
       <div>
-        <ToggleTodo id={id} complete={complete} dateCompleted={dateCompleted} />
+        <ToggleTodo
+          id={_id}
+          complete={complete}
+          dateCompleted={dateCompleted}
+        />
       </div>
       <br />
-      <DeleteTodo id={id} />
+      <DeleteTodo id={_id} />
       <br />
       --------------------------------------------------------------------
       <br />
